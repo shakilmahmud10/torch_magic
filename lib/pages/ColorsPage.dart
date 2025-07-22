@@ -11,24 +11,24 @@ class ColorsPage extends StatefulWidget {
 class _ColorsPageState extends State<ColorsPage> {
 
   final List<Color> baseColors = [
-    Colors.red,
+    Colors.lime,
+    Colors.lightGreen,
     Colors.green,
-    Colors.yellow,
-    Colors.white,
+    Colors.teal,
+    Colors.cyan,
     Colors.blue,
+    Colors.indigo,
+    Colors.deepPurple,
     Colors.purple,
     Colors.pink,
-    Colors.orange,
-    Colors.cyan,
-    Colors.teal,
-    Colors.lime,
-    Colors.indigo,
-    Colors.brown,
-    Colors.grey,
+    Colors.red,
     Colors.deepOrange,
-    Colors.deepPurple,
-    Colors.lightGreen,
+    Colors.orange,
     Colors.amber,
+    Colors.yellow,
+    Colors.white,
+    Colors.grey,
+    Colors.brown,
   ];
 
   int currentIndex = 0;
@@ -49,14 +49,15 @@ class _ColorsPageState extends State<ColorsPage> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-    // Hides the bottom navigation bar and the status bar
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  //   // Hides the bottom navigation bar and the status bar
+  // }
 
   @override
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode, overlays:[]);
   Widget build(BuildContext context) {
 
     final Color currentColor = baseColors[currentIndex];

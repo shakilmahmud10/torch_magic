@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:torch_light/torch_light.dart';
 import 'package:torch_magic/pages/ColorsPage.dart';
 import 'package:torch_magic/pages/PoliceSignal.dart';
+import 'package:torch_magic/pages/Wait.dart';
 
 void main() => runApp(MyApp());
 
@@ -175,12 +176,14 @@ class _FlashLightState extends State<FlashLight> {
                       backgroundColor: Colors.white,
                     ),
                     icon: Icon(Icons.phone_android_sharp),
-                    label: Text("Screen")
+                    label: Text("Text")
                 ),
                 SizedBox(width: 20),
 
                 ElevatedButton.icon(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>Wait()));
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.blueAccent,
                       backgroundColor: Colors.white,
