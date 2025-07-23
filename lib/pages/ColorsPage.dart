@@ -29,6 +29,7 @@ class _ColorsPageState extends State<ColorsPage> {
     Colors.white,
     Colors.grey,
     Colors.brown,
+    Colors.black,
   ];
 
   int currentIndex = 0;
@@ -83,7 +84,7 @@ class _ColorsPageState extends State<ColorsPage> {
           }
         },
 
-        child: const SizedBox.expand(),
+        // child: const SizedBox.expand(),// aita dile page freze hoye jacche.
       ),
     );
   }

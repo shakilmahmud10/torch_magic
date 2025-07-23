@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:torch_light/torch_light.dart';
 import 'package:torch_magic/pages/ColorsPage.dart';
+import 'package:torch_magic/pages/DirectionPage.dart';
 import 'package:torch_magic/pages/PoliceSignal.dart';
 import 'package:torch_magic/pages/Wait.dart';
 
@@ -194,13 +195,15 @@ class _FlashLightState extends State<FlashLight> {
                 SizedBox(width: 20),
 
                 ElevatedButton.icon(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>DirectionPage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.blueAccent,
                       backgroundColor: Colors.white,
                     ),
                     icon: Icon(Icons.double_arrow_outlined),
-                    label: Text("Direction")
+                    label: Text("Directio")
                 ),
               ],
             )

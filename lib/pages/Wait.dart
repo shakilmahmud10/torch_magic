@@ -13,6 +13,7 @@ class _WaitState extends State<Wait> {
   final List<Color> colors = [
     Colors.red,
     Colors.yellow,
+
   ];
 
   final bgColor = Colors.black;
