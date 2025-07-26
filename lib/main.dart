@@ -3,6 +3,7 @@ import 'package:torch_light/torch_light.dart';
 import 'package:torch_magic/pages/ColorsPage.dart';
 import 'package:torch_magic/pages/DirectionPage.dart';
 import 'package:torch_magic/pages/PoliceSignal.dart';
+import 'package:torch_magic/pages/TextPage.dart';
 import 'package:torch_magic/pages/Wait.dart';
 
 void main() => runApp(MyApp());
@@ -171,7 +172,9 @@ class _FlashLightState extends State<FlashLight> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) =>TextPage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.blueAccent,
                       backgroundColor: Colors.white,
@@ -203,7 +206,7 @@ class _FlashLightState extends State<FlashLight> {
                       backgroundColor: Colors.white,
                     ),
                     icon: Icon(Icons.double_arrow_outlined),
-                    label: Text("Directio")
+                    label: Text("Direction")
                 ),
               ],
             )
