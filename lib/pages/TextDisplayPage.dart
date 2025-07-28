@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 
 
 class TextDisplayPage extends StatelessWidget {
@@ -16,25 +17,26 @@ class TextDisplayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            reverse: true,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 200),
-              child: Text(
-                displayText,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-
-                  fontSize: 40,
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
+      body: Center(
+        child: RotatedBox(
+            quarterTurns: 1,
+              child: Container(
+                color: bgColor,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.height,
+                  child: Marquee(
+                      blankSpace: 500,
+                      velocity: 300,
+                      text: displayText,
+                      style: TextStyle(
+                        color: textColor,
+                        fontSize: MediaQuery.of(context).size.width *0.8,
+                        fontWeight: FontWeight.bold
+                      ),
+                  ),
                 ),
               ),
-            ),
-          ),
         ),
       ),
     );
