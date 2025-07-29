@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:torch_light/torch_light.dart';
 import 'package:torch_magic/pages/ColorsPage.dart';
 import 'package:torch_magic/pages/DirectionPage.dart';
@@ -6,14 +7,81 @@ import 'package:torch_magic/pages/PoliceSignal.dart';
 import 'package:torch_magic/pages/TextPage.dart';
 import 'package:torch_magic/pages/Wait.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  runApp(MyApp());
+}
+
+
+// void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+    showInitialNotifications();
+  }
+
+  void showInitialNotifications() async{
+    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+        'channel_Id_1',
+        'channel_Name_1',
+        importance: Importance.max,
+        priority: Priority.high
+    );
+
+    const AndroidNotificationDetails androidDetails2 = AndroidNotificationDetails(
+        'channel_Id_2',
+        'channel_Name_2',
+        importance: Importance.max,
+        priority: Priority.high
+    );
+
+    const NotificationDetails notificationDetails = NotificationDetails(android: androidDetails);
+    const NotificationDetails notificationDetails2 = NotificationDetails(android: androidDetails2);
+
+    await flutterLocalNotificationsPlugin.show(
+        0,
+        'Flash Magic',
+        'Thanks for using Flash Magic Apps',
+        notificationDetails
+    );
+
+    await flutterLocalNotificationsPlugin.show(
+      1,
+      '📢 App Update',
+      'New features have been added. Check now!',
+      notificationDetails2,
+    );
+
+  }
+
+
+
+
+  @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FlashLight(),
     );
   }
@@ -122,6 +190,7 @@ class _FlashLightState extends State<FlashLight> {
               ),
             ),
             SizedBox(height: 40),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
